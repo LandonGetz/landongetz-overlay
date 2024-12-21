@@ -21,8 +21,6 @@ BDEPEND="
 
 inherit git-r3 cmake
 
-S="${WORKDIR}/${PN}"
-
 src_configure() {
 	cmake_src_configure
 }

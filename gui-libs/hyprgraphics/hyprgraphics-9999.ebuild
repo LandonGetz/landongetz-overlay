@@ -16,7 +16,8 @@ DEPEND="
     media-libs/libjxl
 "
 RDEPEND="${DEPEND}"
-BDEPEND="sys-devel/clang"
+BDEPEND="
+"
 
 inherit git-r3 cmake
 

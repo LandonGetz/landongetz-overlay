@@ -86,8 +86,8 @@ src_prepare() {
 
 	# The tarball doesn't contain an icon, so extract it from the binary
 	bbe -s -b '/<svg width="32" height="32"/:/<\x2fsvg>\n/' -e 'J 1;D' zoom \
-		>videoconference-zoom.svg && [[ -s videoconference-zoom.svg ]] \
-		|| die "Extraction of icon failed"
+		>videoconference-zoom.svg && [[ -s videoconference-zoom.svg ]] ||
+		die "Extraction of icon failed"
 
 	if ! use pulseaudio; then
 		# For some strange reason, zoom cannot use any ALSA sound devices if
@@ -104,7 +104,7 @@ src_install() {
 	doins -r calendar cef chatapp email json ringtone scheduler sip \
 		timezones translations
 	doins *.pcm Embedded.properties version.txt
-	doexe zoom zopen ZoomLauncher ZoomWebviewHost *.sh \
+	doexe zoom zopen ZoomLauncher *.sh \
 		aomhost libaomagent.so libdvf.so libmkldnn.so \
 		libavcodec.so* libavformat.so* libavutil.so* libswresample.so*
 	fperms a+x /opt/zoom/cef/chrome-sandbox
@@ -126,7 +126,7 @@ src_install() {
 		doins -r Qt
 		find Qt -type f '(' -name '*.so' -o -name '*.so.*' ')' \
 			-printf '/opt/zoom/%p\0' | xargs -0 -r fperms 0755 || die
-		(	# Remove libs and plugins with unresolved soname dependencies.
+		( # Remove libs and plugins with unresolved soname dependencies.
 			# Why does the upstream package contain such garbage? :-(
 			cd "${ED}"/opt/zoom/Qt || die
 			rm -r plugins/audio plugins/egldeviceintegrations \

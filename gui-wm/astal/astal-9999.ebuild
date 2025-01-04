@@ -19,7 +19,7 @@ IUSE=""
 # You generally need a Rust compiler to build, plus cargo.
 # If Astal has any optional system libraries, list them here as well.
 DEPEND="
-    dev-util/meson
+    dev-build/meson
     dev-lang/vala
     x11-libs/gtk+:3
     x11-libs/gtk-layer-shell

@@ -1,0 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install postinst prepare unpack
+DESCRIPTION=Phoronix's comprehensive, cross-platform testing and benchmark suite
+EAPI=7
+HOMEPAGE=http://www.phoronix-test-suite.com
+INHERIT=bash-completion-r1 xdg-utils-r1 git-r3
+IUSE=sdl
+LICENSE=GPL-3
+PROPERTIES=live
+RDEPEND=app-arch/p7zip media-libs/libpng >=dev-lang/php-5.3:=[cli,curl,gd,posix,pcntl,sockets,ssl,truetype,xml,zip,zlib] dev-php/fpdf www-servers/apache x11-base/xorg-server sdl? ( media-libs/libsdl media-libs/sdl-net media-libs/sdl-image media-libs/libsdl2 media-libs/sdl2-net media-libs/sdl2-image media-libs/sdl2-mixer )
+SLOT=0
+_eclasses_=toolchain-funcs	14648d8795f7779e11e1bc7cf08b7536	multilib	b2a329026f2e404e9e371097dda47f96	bash-completion-r1	767861f3744f589ee5291c1698b1c082	xdg-utils-r1	ff7ea654fb65bc2ffc9117e16e98601a	git-r3	875eb471682d3e1f18da124be97dcc81
+_md5_=f1902c8275abb8405344746a5e818095

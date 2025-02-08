@@ -9,15 +9,14 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+# Dependencies required to build and run libastal
 DEPEND="
-    dev-build/meson
-    dev-lang/vala
-    x11-libs/gtk+:3
-    gui-libs/gtk-layer-shell
-    dev-libs/gobject-introspection
 "
 
 RDEPEND="${DEPEND}"
+
+# Inherit git-r3 for live fetching and meson for the build system
+inherit git-r3
 
 src_prepare() {
 	default

@@ -10,9 +10,8 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-    dev-util/meson
+    dev-build/meson
     dev-lang/vala
-    dev-util/valadoc
     x11-libs/gtk+:3
     x11-libs/gtk-layer-shell
     dev-libs/gobject-introspection

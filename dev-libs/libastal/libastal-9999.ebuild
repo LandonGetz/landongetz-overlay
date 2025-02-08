@@ -13,7 +13,7 @@ DEPEND="
     dev-build/meson
     dev-lang/vala
     x11-libs/gtk+:3
-    x11-libs/gtk-layer-shell
+    gui-libs/gtk-layer-shell
     dev-libs/gobject-introspection
 "
 

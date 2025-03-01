@@ -65,7 +65,6 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.6-no-redefine-fortify-source.patch
 	# https://github.com/nextcloud/desktop/pull/7383
-	"${FILESDIR}"/${PN}-3.14.2-doc-fix.patch
 )
 
 src_prepare() {

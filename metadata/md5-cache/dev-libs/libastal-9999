@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=dev-util/meson dev-lang/vala dev-util/valadoc x11-libs/gtk+:3 x11-libs/gtk-layer-shell dev-libs/gobject-introspection
+DESCRIPTION=Live ebuild for Astal libraries (astal-io and astal3)
+EAPI=8
+HOMEPAGE=https://github.com/aylur/astal
+LICENSE=LGPL-2.1
+RDEPEND=dev-util/meson dev-lang/vala dev-util/valadoc x11-libs/gtk+:3 x11-libs/gtk-layer-shell dev-libs/gobject-introspection
+SLOT=0
+_md5_=256d80b6f2e2734fede23d99229e05fb

@@ -11,7 +11,7 @@ SRC_URI="
 	https://github.com/nextcloud/desktop/archive/v${PV/_/-}-rc3.tar.gz
 		-> ${P}.tar.gz
 "
-S="${WORKDIR}/desktop-${PV/_/-}"
+S="${WORKDIR}/desktop-${PV/_/-}-rc3"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"

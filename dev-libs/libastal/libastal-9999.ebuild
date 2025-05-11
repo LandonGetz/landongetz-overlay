@@ -31,11 +31,9 @@ DEPEND="${RDEPEND}
   dev-vcs/git
 "
 
-S="${WORKDIR}/${PN}/lib/astal/gtk3"
-
 src_configure() {
-  meson setup "${WORKDIR}/${P}/build/io" "${WORKDIR}/astal/lib/astal/io"
-  meson setup "${WORKDIR}/${P}/build/gtk3" "${WORKDIR}/astal/lib/astal/gtk3"
+  meson setup "${WORKDIR}/astal/build/io" "${WORKDIR}/astal/lib/astal/io"
+  meson setup "${WORKDIR}/astal/build/gtk3" "${WORKDIR}/astal/lib/astal/gtk3"
 }
 
 src_compile() {

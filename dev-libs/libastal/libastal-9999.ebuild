@@ -34,16 +34,16 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${PN}/lib/astal/gtk3"
 
 src_configure() {
-  meson setup "${WORKDIR}/${P}/build/io" "${WORKDIR}/${P}/lib/astal/io"
-  meson setup "${WORKDIR}/${P}/build/gtk3" "${WORKDIR}/${P}/lib/astal/gtk3"
+  meson setup "${WORKDIR}/${P}/build/io" "${WORKDIR}/astal/lib/astal/io"
+  meson setup "${WORKDIR}/${P}/build/gtk3" "${WORKDIR}/astal/lib/astal/gtk3"
 }
 
 src_compile() {
-  meson compile -C "${WORKDIR}/${P}/build/io"
-  meson compile -C "${WORKDIR}/${P}/build/gtk3"
+  meson compile -C "${WORKDIR}/astal/build/io"
+  meson compile -C "${WORKDIR}/astal/build/gtk3"
 }
 
 src_install() {
-  DESTDIR="${D}" meson install -C "${WORKDIR}/${P}/build/io"
-  DESTDIR="${D}" meson install -C "${WORKDIR}/${P}/build/gtk3"
+  DESTDIR="${D}" meson install -C "${WORKDIR}/astal/build/io"
+  DESTDIR="${D}" meson install -C "${WORKDIR}/astal/build/gtk3"
 }

@@ -37,13 +37,13 @@ RDEPEND="
 	dev-libs/glib:2
 	dev-libs/hyprlang
 	dev-libs/libinput:=
-#	dev-libs/hyprgraphics:=
+	dev-libs/hyprgraphics:=
 	dev-libs/re2:=
 	>=dev-libs/udis86-1.7.2
 	>=dev-libs/wayland-1.22.90
 	>=gui-libs/aquamarine-0.4.2
 	>=gui-libs/hyprcursor-0.1.9
-	gui-libs/hyprutils:=
+	gui-libs/hyprutils-9999
 	media-libs/libglvnd
 	media-libs/mesa
 	sys-apps/util-linux

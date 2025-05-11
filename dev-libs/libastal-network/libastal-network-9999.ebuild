@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
   dev-vcs/git
 "
 
-S="${WORKDIR}/astal"
+S="${WORKDIR}/{$P}"
 
 src_configure() {
   meson setup "${S}/build" "${S}/lib/network"

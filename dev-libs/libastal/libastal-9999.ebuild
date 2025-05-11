@@ -26,10 +26,9 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
   dev-build/meson
-  dev-util/gobject-introspection
+  dev-libs/gobject-introspection
   dev-lang/vala
   dev-vcs/git
-  dev-libs/wayland-protocols
 "
 
 S="${WORKDIR}/${PN}/lib/astal/gtk3"

@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/astal"
 
 src_configure() {
-  meson setup "${S}/build" "${S}/lib/astal/network"
+  meson setup "${S}/build" "${S}/lib/network"
 }
 
 src_compile() {

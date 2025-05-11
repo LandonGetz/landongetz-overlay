@@ -25,7 +25,7 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-  dev-util/meson
+  dev-build/meson
   dev-util/gobject-introspection
   dev-lang/vala
   dev-vcs/git

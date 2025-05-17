@@ -51,7 +51,6 @@ pkg_nofetch() {
 
 src_install() {
 	mv usr/share/doc/snapgene usr/share/doc/${PF} || die
-	gzip -d usr/share/doc/${PF}/changelog.Debian.gz || die
 
 	insinto /
 	doins -r *

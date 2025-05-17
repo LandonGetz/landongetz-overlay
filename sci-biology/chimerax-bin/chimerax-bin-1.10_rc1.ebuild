@@ -5,12 +5,12 @@ EAPI=8
 
 DESCRIPTION="UCSF ChimeraX molecular modeling system (binary)"
 HOMEPAGE="https://www.cgl.ucsf.edu/chimerax/"
-SRC_URI="https://www.cgl.ucsf.edu/chimerax/cgi-bin/secure/chimerax-get.py?ident=OHeQer2WTqZn%2F%2BNptnhC7uBgu0lERNn80Bl41Qvhhu4rrOjPcCcB&file=current%2Fubuntu-24.04%2Fchimerax-candidate.deb&choice=Notified"
+SRC_URI="https://www.cgl.ucsf.edu/chimerax/download.html"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-RESTRICT="mirror bindist"
+RESTRICT="mirror bindist fetch"
 
 S=${WORKDIR}
 

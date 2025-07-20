@@ -2,7 +2,7 @@
 
 EAPI=8
 
-inherit git-r3 meson-utils pkgconfig
+inherit git-r3 meson
 
 DESCRIPTION="Sandboxed, modular image decoding library for GNOME"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/glycin"

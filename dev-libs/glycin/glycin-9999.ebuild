@@ -22,13 +22,11 @@ DEPEND="
     >=media-libs/lcms-2.14
     >=dev-libs/glib-2.60
 	>=sys-libs/libseccomp-2.5.0
-	>=dev-libs/fontconfig-2.13.0"
-
+"
 RDEPEND="
     >=media-libs/lcms-2.14
     >=dev-libs/glib-2.60
     >=sys-libs/libseccomp-2.5.0
-    >=dev-libs/fontconfig-2.13.0
     sys-apps/bubblewrap
 "
 

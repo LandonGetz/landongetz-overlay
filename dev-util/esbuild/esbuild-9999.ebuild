@@ -42,5 +42,5 @@ src_install() {
 	dobin esbuild
 
 	dodir "${ED}/usr/share/licenses/${PN}"
-	doins LICENSE
+	doins LICENSE.md
 }

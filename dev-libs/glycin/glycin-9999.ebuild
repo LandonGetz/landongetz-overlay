@@ -16,8 +16,8 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
     dev-vcs/git
     dev-lang/rust
-    dev-util/meson
-    dev-util/ninja
+    dev-build/meson
+    dev-build/ninja
     dev-util/pkgconf
     >=media-libs/lcms-2.14
     >=dev-libs/glib-2.60

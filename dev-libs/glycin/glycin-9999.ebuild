@@ -19,11 +19,10 @@ DEPEND="
     dev-util/meson
     dev-util/ninja
     dev-util/pkgconf
-    >=media-libs/lcms-2.14        # lcms2_req :contentReference[oaicite:1]{index=1}
-    >=dev-libs/glib-2.60           # gio_req :contentReference[oaicite:2]{index=2}
-    >=sys-libs/libseccomp-2.5.0      # seccomp_req :contentReference[oaicite:4]{index=4}
-    >=dev-libs/fontconfig-2.13.0     # fontconfig_req :contentReference[oaicite:5]{index=5}
-"
+    >=media-libs/lcms-2.14
+    >=dev-libs/glib-2.60
+	>=sys-libs/libseccomp-2.5.0
+	>=dev-libs/fontconfig-2.13.0"
 
 RDEPEND="
     >=media-libs/lcms-2.14

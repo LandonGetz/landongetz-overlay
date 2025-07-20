@@ -20,7 +20,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X legacy-renderer +qtutils systemd"
+IUSE="X +qtutils systemd"
 
 # hyprpm (hyprland plugin manager) requires the dependencies at runtime
 # so that it can clone, compile and install plugins.
@@ -88,11 +88,16 @@ pkg_setup() {
 }
 
 src_configure() {
-	local emesonargs=(
-		$(meson_feature legacy-renderer legacy_renderer)
-		$(meson_feature systemd)
-		$(meson_feature X xwayland)
-	)
+    local mesonopts=(
+        $(meson_feature systemd)
+        $(meson_feature X xwayland)
+        # if you want to toggle the built‑in plugin manager:
+        $(meson_feature hyprpm)
+        # if you want to expose Tracy profiling:
+        $(meson_feature tracy_enable)
+    )
+    meson_src_configure "${mesonopts[@]}"
+}	)
 
 	meson_src_configure
 }

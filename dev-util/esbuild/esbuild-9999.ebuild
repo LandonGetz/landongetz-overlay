@@ -38,4 +38,6 @@ src_compile() {
 }
 
 src_install() {
+	dodir /usr/bin
+	dobin esbuild
 }

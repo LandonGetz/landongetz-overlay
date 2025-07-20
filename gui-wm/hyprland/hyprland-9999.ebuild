@@ -1,94 +1,98 @@
-# dev-util/hyprland-9999.ebuild
+# Copyright 2023-2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit git-r3 cmake-utils meson-utils
+inherit meson toolchain-funcs
 
-DESCRIPTION="A dynamic tiling Wayland compositor — live Git version"
+DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 HOMEPAGE="https://github.com/hyprwm/Hyprland"
-SRC_URI=""
+
+if [[ "${PV}" = *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/hyprwm/${PN^}.git"
+else
+	SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${P}.gh.tar.gz"
+	S="${WORKDIR}/${PN}-source"
+
+	KEYWORDS="~amd64"
+fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="X qtutils systemd hyprpm tracy_enable"
+IUSE="X +qtutils systemd"
 
-# hyprpm (plugin manager) needs these at runtime
+# hyprpm (hyprland plugin manager) requires the dependencies at runtime
+# so that it can clone, compile and install plugins.
 HYPRPM_RDEPEND="
-    app-alternatives/ninja
-    >=dev-build/cmake-3.30
-    dev-build/meson
-    dev-vcs/git
-    virtual/pkgconfig
+	app-alternatives/ninja
+	>=dev-build/cmake-3.30
+	dev-build/meson
+	dev-vcs/git
+	virtual/pkgconfig
 "
-
 RDEPEND="
-    ${HYPRPM_RDEPEND}
-    dev-cpp/tomlplusplus
-    dev-libs/glib:2
-    dev-libs/hyprlang
-    dev-libs/libinput:=
-    dev-libs/hyprgraphics:=
-    dev-libs/re2:=
-    >=dev-libs/udis86-1.7.2
-    >=dev-libs/wayland-1.22.90
-    >=gui-libs/aquamarine-0.4.2
-    >=gui-libs/hyprcursor-0.1.9
-    >=gui-libs/hyprutils-9999
-    media-libs/libglvnd
-    media-libs/mesa
-    sys-apps/util-linux
-    x11-libs/cairo
-    x11-libs/libdrm
-    x11-libs/libxkbcommon
-    x11-libs/pango
-    x11-libs/pixman
-    x11-libs/libXcursor
-    qtutils? ( gui-libs/hyprland-qtutils )
-    X? (
-        x11-libs/libxcb:0=
-        x11-base/xwayland
-        x11-libs/xcb-util-errors
-        x11-libs/xcb-util-wm
-    )
+	${HYPRPM_RDEPEND}
+	dev-cpp/tomlplusplus
+	dev-libs/glib:2
+	dev-libs/hyprlang
+	dev-libs/libinput:=
+	dev-libs/hyprgraphics:=
+	dev-libs/re2:=
+	>=dev-libs/udis86-1.7.2
+	>=dev-libs/wayland-1.22.90
+	>=gui-libs/aquamarine-0.8.0:=
+	>=gui-libs/hyprcursor-0.1.9
+	>=gui-libs/hyprutils-0.5.2:=
+	media-libs/libglvnd
+	media-libs/mesa
+	sys-apps/util-linux
+	x11-libs/cairo
+	x11-libs/libdrm
+	x11-libs/libxkbcommon
+	x11-libs/pango
+	x11-libs/pixman
+	x11-libs/libXcursor
+	qtutils? ( gui-libs/hyprland-qtutils )
+	X? (
+		x11-libs/libxcb:0=
+		x11-base/xwayland
+		x11-libs/xcb-util-errors
+		x11-libs/xcb-util-wm
+	)
 "
-
 DEPEND="
-    ${RDEPEND}
-    >=dev-libs/wayland-protocols-1.36
+	${RDEPEND}
+	dev-cpp/glaze
+	>=dev-libs/hyprland-protocols-0.6.0
+	>=dev-libs/wayland-protocols-1.41
 "
-
 BDEPEND="
-    || ( >=sys-devel/gcc-14:* >=llvm-core/clang-18:* )
-    app-misc/jq
-    dev-build/cmake
-    >=dev-util/hyprwayland-scanner-0.3.10
-    virtual/pkgconfig
+	|| ( >=sys-devel/gcc-14:* >=llvm-core/clang-18:* )
+	app-misc/jq
+	dev-build/cmake
+	>=dev-util/hyprwayland-scanner-0.3.10
+	virtual/pkgconfig
 "
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} == binary ]] && return
 
 	if tc-is-gcc && ver_test $(gcc-version) -lt 14; then
-		die "GCC >=14 is required to build Hyprland; please upgrade."
+		eerror "Hyprland requires >=sys-devel/gcc-14 to build"
+		eerror "Please upgrade GCC: emerge -v1 sys-devel/gcc"
+		die "GCC version is too old to compile Hyprland!"
 	elif tc-is-clang && ver_test $(clang-version) -lt 18; then
-		die "Clang >=18 is required to build Hyprland; please upgrade."
+		eerror "Hyprland requires >=llvm-core/clang-18 to build"
+		eerror "Please upgrade Clang: emerge -v1 llvm-core/clang"
+		die "Clang version is too old to compile Hyprland!"
 	fi
 }
 
 src_configure() {
-	local mesonopts=(
+	local emesonargs=(
 		$(meson_feature systemd)
 		$(meson_feature X xwayland)
-		$(meson_feature hyprpm)
-		$(meson_feature tracy_enable)
 	)
-	meson_src_configure "${mesonopts[@]}"
-}
-
-src_compile() {
-	meson_compile
-}
-
-src_install() {
-	meson_install
+	meson_src_configure
 }

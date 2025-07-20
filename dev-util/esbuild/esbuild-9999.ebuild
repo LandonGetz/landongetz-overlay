@@ -38,9 +38,4 @@ src_compile() {
 }
 
 src_install() {
-	dodir /usr/bin
-	dobin esbuild
-
-	dodir "${ED}/usr/share/licenses/${PN}"
-	doins LICENSE.md
 }

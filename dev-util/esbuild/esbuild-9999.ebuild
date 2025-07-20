@@ -21,12 +21,11 @@ src_unpack() {
 	git-r3_src_unpack
 	# 2) prepare Go modules for vendoring
 	go-module_src_unpack
+	go-module_live_vendor
 }
 
 src_prepare() {
 	default
-	# vendor all dependencies so build is reproducible
-	go-module_live_vendor
 }
 
 src_compile() {
